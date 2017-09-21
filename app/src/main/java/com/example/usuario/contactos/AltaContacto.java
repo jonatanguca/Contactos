@@ -45,7 +45,7 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void crearContacto(View v) {
+    public void crearContacto(View view) {
 
         Button btnCancelar = (Button) findViewById(R.id.btnCancelar);
         btnCancelar.setOnClickListener((View.OnClickListener) this);
@@ -59,7 +59,7 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void mostrarDialogo(View v) {
+    public void mostrarDialogo(View view) {
 
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         alerta.setMessage("¿Quieres salir?");
@@ -71,6 +71,6 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
         });
         alerta.setNegativeButton("NO", null);
         alerta.show();
-        
+
     }
 }
