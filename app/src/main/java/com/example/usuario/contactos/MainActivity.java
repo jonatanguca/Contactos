@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
+        // éste if es de prueba
         if (requestCode == BAJA){
             if (resultCode == Activity.RESULT_OK) {
                 if (data.hasExtra("contacto")) {
