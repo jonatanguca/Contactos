@@ -5,7 +5,6 @@ package com.example.usuario.contactos;
  */
 
 import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -17,13 +16,16 @@ import android.widget.EditText;
 
 public class AltaContacto extends AppCompatActivity implements View.OnClickListener {
     private Contacto contacto;
+    private AlertDialog ventana;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anadir_contacto);
+        setContentView(R.layout.activity_altacontacto);
         Button btnAceptar = (Button) findViewById(R.id.btnAlta);
         btnAceptar.setOnClickListener(this);
+        Button btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        btnCancelar.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
@@ -39,16 +41,16 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.btnCancelar:
-                mostrarDialogo(view);
-                finish();
+                if (ventana == null) {
+                    ventana = mostrarDialogo();
+                }
+                ventana.show();
                 break;
         }
     }
 
     public void crearContacto(View view) {
 
-        Button btnCancelar = (Button) findViewById(R.id.btnCancelar);
-        btnCancelar.setOnClickListener((View.OnClickListener) this);
         EditText edtNombre = (EditText) findViewById(R.id.nombre);
         EditText edtEmail = (EditText) findViewById(R.id.email);
         EditText edtEdad = (EditText) findViewById(R.id.edad);
@@ -59,18 +61,22 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void mostrarDialogo(View view) {
+    public AlertDialog mostrarDialogo() {
 
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         alerta.setMessage("¿Quieres salir?");
-        alerta.setPositiveButton("VALE", new DialogInterface.OnClickListener() {
+        alerta.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(DialogInterface dialogInterface, int id) {
                 AltaContacto.this.finish();
             }
         });
-        alerta.setNegativeButton("NO", null);
-        alerta.show();
+        alerta.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int id) {
 
+            }
+        });
+        return alerta.create();
     }
 }
