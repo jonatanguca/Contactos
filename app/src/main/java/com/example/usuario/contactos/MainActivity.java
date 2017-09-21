@@ -62,5 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
+        if (requestCode == BAJA){
+            if (resultCode == Activity.RESULT_OK) {
+                if (data.hasExtra("contacto")) {
+                    lista.remove((Contacto) data.getParcelableExtra("contacto"));
+                }
+            }        }
     }
 }
