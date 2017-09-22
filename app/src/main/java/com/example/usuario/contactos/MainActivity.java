@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,19 +56,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ALTA) {
-            if (resultCode == Activity.RESULT_OK) {
-                if (data.hasExtra("contacto")) {
-                    lista.add((Contacto) data.getParcelableExtra("contacto"));
+        switch (requestCode) {
+            case ALTA:
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data.hasExtra("contacto")) {
+                        lista.add((Contacto) data.getParcelableExtra("contacto"));
+                    }
                 }
-            }
+                break;
+            case BAJA:
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data.hasExtra("contacto")) {
+                        if (lista.remove((Contacto) data.getParcelableExtra("contacto"))) {
+                            Toast.makeText(this.getApplicationContext(), "Se ha borrado", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(this.getApplicationContext(), "NO se ha borrado", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+                break;
+            case LISTAR:
+                break;
         }
-        // éste if es de prueba
-        if (requestCode == BAJA){
-            if (resultCode == Activity.RESULT_OK) {
-                if (data.hasExtra("contacto")) {
-                    lista.remove((Contacto) data.getParcelableExtra("contacto"));
-                }
-            }        }
+
     }
 }

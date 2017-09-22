@@ -81,23 +81,23 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/btnAlta"
+        android:id="@+id/btnBaja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_marginEnd="57dp"
         android:layout_marginRight="57dp"
         android:layout_marginTop="93dp"
-        android:layout_toLeftOf="@+id/btnCancelar"
-        android:layout_toStartOf="@+id/btnCancelar"
+        android:layout_toLeftOf="@+id/btnCancelarBaja"
+        android:layout_toStartOf="@+id/btnCancelarBaja"
         android:text="alta" />
 
     <Button
-        android:id="@+id/btnCancelar"
+        android:id="@+id/btnCancelarBaja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnAlta"
-        android:layout_alignBottom="@+id/btnAlta"
+        android:layout_alignBaseline="@+id/btnBaja"
+        android:layout_alignBottom="@+id/btnBaja"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="69dp"

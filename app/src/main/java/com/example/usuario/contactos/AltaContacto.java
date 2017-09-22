@@ -22,16 +22,16 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_altacontacto);
-        Button btnAceptar = (Button) findViewById(R.id.btnAlta);
+        Button btnAceptar = (Button) findViewById(R.id.btnBaja);
         btnAceptar.setOnClickListener(this);
-        Button btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        Button btnCancelar = (Button) findViewById(R.id.btnCancelarBaja);
         btnCancelar.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnAlta:
+            case R.id.btnBaja:
                 crearContacto(view);
                 if (contacto != null) {
                     Intent intent = new Intent();
@@ -40,7 +40,7 @@ public class AltaContacto extends AppCompatActivity implements View.OnClickListe
                 }
                 finish();
                 break;
-            case R.id.btnCancelar:
+            case R.id.btnCancelarBaja:
                 if (ventana == null) {
                     ventana = mostrarDialogo();
                 }
