@@ -94,4 +94,9 @@ public class Contacto implements Parcelable {
         parcel.writeString(email);
         parcel.writeInt(edad);
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n" + "Email: " + email + "\n" + "Edad: " + edad;
+    }
 }
